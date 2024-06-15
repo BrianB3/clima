@@ -35,8 +35,8 @@ async function mostrarClimaActual() {
         img.src = `${datos.forecast.forecastday[i].day.condition.icon.substring(21)}`;
         let epochdate = `${datos.forecast.forecastday[i].date_epoch}`
         dia.innerHTML = obtenerDiaAbreviado(epochdate);
-        min.innerHTML = `${Math.round(datos.forecast.forecastday[i].day.mintemp_c)}º | `
-        max.innerHTML = `${Math.round(datos.forecast.forecastday[i].day.maxtemp_c)}º`
+        max.innerHTML = `${Math.round(datos.forecast.forecastday[i].day.maxtemp_c)}º | `
+        min.innerHTML = `${Math.round(datos.forecast.forecastday[i].day.mintemp_c)}º`
     }
 
     // Guardar las velocidades del viento por hora
