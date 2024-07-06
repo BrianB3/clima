@@ -10,39 +10,61 @@
 <body>
     <main class="container text-center">
         <h1 class="my-4">Clima Actual en Maldonado</h1>
+        
         <div class="my-4 w-100 d-flex align-items-center text-center card p-4" id="clima-actual">
+
             <img class="img-fluid" id="icono-condicion" alt="Icono del clima">
-            <p>Actualmente:<br><span class="fw-bold" id="temperatura"></span><span class="fw-bold">°C</span><br><span class="fw-bold" id="condicion"></span></p>
+
+            <p>Actualmente:<br>
+                <span class="fw-bold" id="temperatura"></span>
+                <span class="fw-bold">°C</span><br>
+                <span class="fw-bold" id="condicion"></span>
+            </p>
+
             <p>Viento: <br><span class="fw-bold" id="viento"></span> km/h</p>
 
-            <div class="d-flex mt-4 w-50 justify-content-around">
-                <div class="card align-items-center p-2 card-proximo-dia">
+            <div class="row mt-4 w-50 justify-content-around">
+
+                <div class="col-12 col-md-3 mb-4 mb-md-0 card align-items-center p-2 card-proximo-dia">
                     <p class="span-dia p-1 m-0"></p>
+
                     <img class="img-fluid" alt="Icono del clima">
-                    <p class="m-0 p-1"><span class="span-max"></span><span class="span-min opacity-75"></span></p>
+                    
+                    <p class="m-0 p-1">
+                        <span class="span-max"></span>
+                        <span class="span-min opacity-75"></span>
+                    </p>
                 </div>
-                <div class="card align-items-center p-2 card-proximo-dia">
+
+                <div class="col-12 col-md-3 mb-4 mb-md-0 card align-items-center p-2 card-proximo-dia">
                     <p class="span-dia p-1 m-0"></p>
+
                     <img class="img-fluid" alt="Icono del clima">
-                    <p class="m-0 p-1"><span class="span-max"></span><span class="span-min opacity-75"></span></p>
+
+                    <p class="m-0 p-1">
+                        <span class="span-max"></span>
+                        <span class="span-min opacity-75"></span>
+                    </p>
                 </div>
-                <div class="card align-items-center p-2 card-proximo-dia">
+
+                <div class="col-12 col-md-3 mb-4 mb-md-0 card align-items-center p-2 card-proximo-dia">
                     <p class="span-dia p-1 m-0"></p>
+
                     <img class="img-fluid" alt="Icono del clima">
-                    <p class="m-0 p-1"><span class="span-max"></span><span class="span-min opacity-75"></span></p>
+                    <p class="m-0 p-1">
+
+                        <span class="span-max"></span>
+                        <span class="span-min opacity-75"></span>
+                    </p>
                 </div>
-                <div class="card align-items-center p-2 card-proximo-dia">
-                    <p class="span-dia p-1 m-0"></p>
-                    <img class="img-fluid" alt="Icono del clima">
-                    <p class="m-0 p-1"><span class="span-max"></span><span class="span-min opacity-75"></span></p>
-                </div>
+
             </div>
         </div>
 
         <div class="my-4 w-100 d-flex align-items-center text-center card p-4">
-            <label for="hourSlider" class="form-label">Hora:</label>
+            <label for="hourSlider" class="form-label">Velocidad del viento hoy:</label>
             <input type="range" class="form-range" id="hourSlider" min="0" max="23" step="1" value="0" oninput="updateWindSpeed(this.value)">
-            <p>Velocidad del viento a las <span id="hora"></span>: <span class="fw-bold" id="viento-hora"></span> km/h</p>
+            <p><span id="hora"></span> | <span class="fw-bold" id="viento-hora"></span> km/h</p>
         </div>
     </main>
     <script src="index.js"></script>

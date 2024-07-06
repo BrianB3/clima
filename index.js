@@ -1,5 +1,5 @@
-const apiUrl = 'https://api.weatherapi.com/v1/forecast.json?key=2989ac1950fe4dbf9e8222555240206&q=Maldonado&days=5&aqi=no&alerts=no&lang=es';
-let hourlyWindSpeeds = [];
+const apiUrl = 'https://api.weatherapi.com/v1/forecast.json?key=2989ac1950fe4dbf9e8222555240206&q=Maldonado&days=3&lang=es';
+let vientoPorHora = [];
 
 async function mostrarClimaActual() {
   try {
@@ -17,9 +17,10 @@ async function mostrarClimaActual() {
     const temperatura = document.getElementById('temperatura');
     const viento = document.getElementById('viento');
     const condicion = document.getElementById('condicion');
+    const sliderViento = document.getElementById('hourSlider');
     const iconoCondicion = document.getElementById('icono-condicion');
     const cardProximosDias = document.querySelectorAll('.card-proximo-dia');
-
+    
     // Actualizar el contenido del HTML con los datos del clima
     temperatura.textContent = Math.round(datos.current.temp_c);
     viento.textContent = Math.round(datos.current.wind_kph);
@@ -40,10 +41,12 @@ async function mostrarClimaActual() {
     }
 
     // Guardar las velocidades del viento por hora
-    hourlyWindSpeeds = datos.forecast.forecastday[0].hour.map(hora => Math.round(hora.wind_kph));
+    vientoPorHora = datos.forecast.forecastday[0].hour.map(hora => Math.round(hora.wind_kph));
 
     // Actualizar la velocidad del viento para la hora inicial (00:00)
-    updateWindSpeed(0);
+    const horaActual = new Date().getHours();
+    sliderViento.value = horaActual;
+    updateWindSpeed(horaActual);
 
   } catch (error) {
     // Manejar errores
@@ -54,14 +57,13 @@ async function mostrarClimaActual() {
 function updateWindSpeed(hour) {
     const vientoHora = document.getElementById('viento-hora');
     const hora = document.getElementById('hora');
-    vientoHora.textContent = hourlyWindSpeeds[hour];
+    vientoHora.textContent = vientoPorHora[hour];
     hora.textContent = hour.toString().padStart(2, '0') + ":00";
 }
 
 function obtenerDiaAbreviado(epochTime) {
     const date = new Date(epochTime * 1000);
     const diasSemana = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
-    console.log(diasSemana[date.getUTCDay()])
     return diasSemana[date.getUTCDay()];
 }
 
